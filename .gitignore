@@ -33,11 +33,12 @@ wheels/
 checkpoints/
 samples/
 
-# Training outputs
+# Training outputs (but allow data directory images)
 training_losses.png
-*.png
-*.jpg
-*.jpeg
+# Don't ignore images in data directory
+!data/**/*.png
+!data/**/*.jpg
+!data/**/*.jpeg
 
 # IDE
 .vscode/
@@ -51,5 +52,5 @@ training_losses.png
 Thumbs.db
 
 # Data (optional - uncomment if you don't want to track data)
-# data/
+# data/  # Currently tracking data directory
 
