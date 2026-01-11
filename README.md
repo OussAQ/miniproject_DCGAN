@@ -2,11 +2,11 @@
 
 This project implements a **Deep Convolutional Generative Adversarial Network (DCGAN)** to generate realistic insect images. The implementation includes standard DCGAN architecture with some enhancements for better image quality.
 
-## 🎯 Overview
+## Overview
 
 The model is trained on a dataset of insect images organized by categories (Ant, Bee, Beetle, Butterfly, Dragonfly, Fly, Grasshopper, Ladybug, Mosquito, Spider, Wasp). The DCGAN architecture uses standard techniques with some improvements for sharper image generation.
 
-## ✨ Key Features
+## Key Features
 
 ### Architecture Enhancements
 - **Enhanced Generator**: Increased capacity (256 filters) for better detail generation
@@ -20,13 +20,13 @@ The model is trained on a dataset of insect images organized by categories (Ant,
 - **1:1 Training Balance**: One discriminator update per generator update
 - **Adam Optimizer**: Standard DCGAN optimizer settings (beta1=0.5, beta2=0.999)
 
-## 📋 Requirements
+## Requirements
 
 - Python 3.7+
 - PyTorch 2.0+
 - CUDA-capable GPU (recommended for training)
 
-## 🚀 Installation
+## Installation
 
 1. **Clone the repository:**
 ```bash
@@ -44,7 +44,7 @@ pip install -r requirements.txt
    - Place all images in a `data/` directory
    - Supported formats: `.jpg`, `.jpeg`, `.png`
 
-## 📖 Usage
+## Usage
 
 ### Running the Notebook
 
@@ -73,7 +73,7 @@ The notebook is organized into the following sections:
 
 For detailed documentation of each cell, see [NOTEBOOK_DOCUMENTATION.md](NOTEBOOK_DOCUMENTATION.md).
 
-## 🏗️ Architecture Details
+## Architecture Details
 
 ### Generator Architecture
 
@@ -104,7 +104,7 @@ For detailed documentation of each cell, see [NOTEBOOK_DOCUMENTATION.md](NOTEBOO
 3. **No BatchNorm in Discriminator's Last Layer**: Before minibatch std layer
 4. **Minibatch Standard Deviation**: Forces generator to produce high-frequency detail
 
-## ⚙️ Hyperparameters
+## Hyperparameters
 
 ### Core Parameters
 - **Image Size**: 64×64 pixels
@@ -123,7 +123,7 @@ For detailed documentation of each cell, see [NOTEBOOK_DOCUMENTATION.md](NOTEBOO
 - **Discriminator Filters**: 128 (base)
 - **Training Balance**: 1:1 (one D update per G update)
 
-## 📊 Training Process
+## Training Process
 
 ### Loss Functions
 
@@ -157,7 +157,7 @@ The generator tries to maximize the discriminator's probability on fake images.
    - Generate sample images periodically
    - Save checkpoints every 10 epochs
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 miniproject_DCGAN/
@@ -177,7 +177,7 @@ miniproject_DCGAN/
 └── .gitignore                    # Git ignore rules
 ```
 
-## 💾 Model Checkpoints
+## Model Checkpoints
 
 - Checkpoints are saved every 10 epochs
 - Each checkpoint includes:
@@ -193,68 +193,14 @@ netG.load_state_dict(checkpoint['generator_state_dict'])
 netD.load_state_dict(checkpoint['discriminator_state_dict'])
 ```
 
-## 🎨 Generated Samples
+## Generated Samples
 
 Sample images are automatically generated and saved during training:
 - Saved in `samples/` directory
 - Generated every 10 epochs
 - 64 samples per grid (8×8)
 
-## 🔧 Troubleshooting
-
-### Generator Loss Not Decreasing
-
-If the generator loss is not decreasing:
-
-1. **Check discriminator is not too strong:**
-   - Monitor discriminator scores on real vs fake images
-   - If gap is too large, reduce discriminator learning rate
-
-2. **Reduce label smoothing:**
-   ```python
-   LABEL_SMOOTHING = 0.05  # reduce from 0.1
-   ```
-
-3. **Train for more epochs:**
-   - GANs often need many epochs to converge
-   - Try 200+ epochs
-
-### Blurry Outputs
-
-If generated images are blurry:
-
-1. **Increase generator capacity:**
-   ```python
-   GEN_FILTERS = 512  # increase from 256
-   ```
-
-2. **Train for more epochs:**
-   ```python
-   NUM_EPOCHS = 200  # or more
-   ```
-
-3. **Check minibatch std is working:**
-   - The discriminator should have minibatch std layer
-   - This encourages high-frequency detail
-
-### Out of Memory Errors
-
-1. **Reduce batch size:**
-   ```python
-   BATCH_SIZE = 32  # or 16
-   ```
-
-2. **Reduce image size:**
-   ```python
-   IMAGE_SIZE = 32  # instead of 64
-   ```
-
-3. **Reduce generator filters:**
-   ```python
-   GEN_FILTERS = 128  # reduce from 256
-   ```
-
-## 📈 Monitoring Training
+## Monitoring Training
 
 ### Loss Tracking
 
@@ -270,7 +216,7 @@ The notebook tracks:
 - Sample images are displayed during training
 - Checkpoint images saved periodically
 
-## 🎓 Key Concepts
+## Key Concepts
 
 ### DCGAN Principles
 - Use of transposed convolutions for upsampling
@@ -284,35 +230,18 @@ The notebook tracks:
 2. **Minibatch Standard Deviation**: Encourages texture detail
 3. **Label Smoothing**: Improves generalization
 
-## 📝 Citation
-
-If you use this code in your research, please cite:
-
-```bibtex
-@misc{insect_dcgan,
-  title={DCGAN for Insect Image Generation},
-  author={Oussama},
-  year={2024},
-  url={https://github.com/OussAQ/miniproject_DCGAN}
-}
-```
-
-## 👤 Author
+## Author
 
 **Oussama**
 - Email: oussamaaqebli0628@gmail.com
 - GitHub: [OussAQ](https://github.com/OussAQ)
 
-## 📄 License
-
-This project is open source and available for educational purposes.
-
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - DCGAN paper: Radford et al., "Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks" (arXiv:1511.06434)
 - PyTorch documentation and community
 
-## 🔮 Future Improvements
+## Future Improvements
 
 - [ ] Progressive growing for higher resolution
 - [ ] Perceptual loss using VGG features
@@ -320,9 +249,3 @@ This project is open source and available for educational purposes.
 - [ ] Conditional GAN for class-specific generation
 - [ ] FID/IS score evaluation
 - [ ] Web interface for image generation
-
----
-
-**Note**: This implementation uses standard DCGAN architecture with enhancements for better image quality. The increased generator capacity and minibatch standard deviation help produce sharper, more detailed images.
-
-For detailed cell-by-cell documentation, see [NOTEBOOK_DOCUMENTATION.md](NOTEBOOK_DOCUMENTATION.md).
