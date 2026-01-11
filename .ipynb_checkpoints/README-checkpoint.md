@@ -44,6 +44,13 @@ pip install -r requirements.txt
    - Place all images in a `data/` directory
    - Supported formats: `.jpg`, `.jpeg`, `.png`
 
+## Data
+
+Check out my Github repository.
+
+**Note :** The dataset is not mine, you can find it on Kaggle by the author **Ismail Elmain**.
+**Link :** https://www.kaggle.com/datasets/ismail703/insects
+
 ## Usage
 
 ### Running the Notebook
